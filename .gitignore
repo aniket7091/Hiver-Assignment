@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Dataset
+data/raw/twcs.csv
+
+# Generated processed data
+data/processed/*.csv
+data/processed/*.jsonl
+
+# Local artifacts
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+# Local/generated model artifacts
+data/processed/*.pkl
+
+# Backup/local files
+data/golden/*_backup.jsonl
+scripts/*_backup.py
+data/golden/golden_set.json

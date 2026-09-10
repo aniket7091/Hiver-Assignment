@@ -1,0 +1,304 @@
+{
+  "evaluation_metadata": {
+    "golden_examples": 200,
+    "golden_file": "/Users/aniket/Desktop/Hiver-project/data/golden/golden_set.jsonl",
+    "note": "The golden set is used only for evaluation. The production intent classifier is trained outside the golden set."
+  },
+  "trivial": {
+    "name": "trivial_majority_baseline",
+    "majority_intent": "delivery_issue",
+    "accuracy": 0.18,
+    "macro_f1": 0.0277,
+    "weighted_f1": 0.0549
+  },
+  "tfidf": {
+    "name": "tfidf_logistic_regression",
+    "accuracy": 0.35,
+    "macro_f1": 0.3449,
+    "weighted_f1": 0.3359,
+    "classification_report": {
+      "delivery_issue": {
+        "precision": 0.25,
+        "recall": 0.16666666666666666,
+        "f1-score": 0.2,
+        "support": 36.0
+      },
+      "order_issue": {
+        "precision": 0.5625,
+        "recall": 0.42857142857142855,
+        "f1-score": 0.4864864864864865,
+        "support": 21.0
+      },
+      "shipping_issue": {
+        "precision": 0.21052631578947367,
+        "recall": 0.3076923076923077,
+        "f1-score": 0.25,
+        "support": 13.0
+      },
+      "payment_issue": {
+        "precision": 0.3333333333333333,
+        "recall": 0.16666666666666666,
+        "f1-score": 0.2222222222222222,
+        "support": 12.0
+      },
+      "refund_issue": {
+        "precision": 0.3333333333333333,
+        "recall": 0.4166666666666667,
+        "f1-score": 0.37037037037037035,
+        "support": 12.0
+      },
+      "account_issue": {
+        "precision": 0.55,
+        "recall": 0.6470588235294118,
+        "f1-score": 0.5945945945945946,
+        "support": 17.0
+      },
+      "prime_video_issue": {
+        "precision": 0.4,
+        "recall": 0.5454545454545454,
+        "f1-score": 0.46153846153846156,
+        "support": 11.0
+      },
+      "device_issue": {
+        "precision": 0.375,
+        "recall": 0.3,
+        "f1-score": 0.3333333333333333,
+        "support": 10.0
+      },
+      "product_or_content_issue": {
+        "precision": 0.2857142857142857,
+        "recall": 0.14814814814814814,
+        "f1-score": 0.1951219512195122,
+        "support": 27.0
+      },
+      "support_complaint": {
+        "precision": 0.23076923076923078,
+        "recall": 0.3,
+        "f1-score": 0.2608695652173913,
+        "support": 10.0
+      },
+      "other": {
+        "precision": 0.34,
+        "recall": 0.5483870967741935,
+        "f1-score": 0.41975308641975306,
+        "support": 31.0
+      },
+      "accuracy": 0.35,
+      "macro avg": {
+        "precision": 0.3519251362672415,
+        "recall": 0.3613920318336395,
+        "f1-score": 0.34493546103655687,
+        "support": 200.0
+      },
+      "weighted avg": {
+        "precision": 0.3480566006362059,
+        "recall": 0.35,
+        "f1-score": 0.3359251292990247,
+        "support": 200.0
+      }
+    }
+  },
+  "end_to_end": {
+    "name": "end_to_end_agent",
+    "num_examples": 200,
+    "intent": {
+      "accuracy": 0.44,
+      "macro_f1": 0.4544,
+      "weighted_f1": 0.4281,
+      "classification_report": {
+        "delivery_issue": {
+          "precision": 0.6190476190476191,
+          "recall": 0.3611111111111111,
+          "f1-score": 0.45614035087719296,
+          "support": 36.0
+        },
+        "order_issue": {
+          "precision": 0.6363636363636364,
+          "recall": 0.3333333333333333,
+          "f1-score": 0.4375,
+          "support": 21.0
+        },
+        "shipping_issue": {
+          "precision": 0.36363636363636365,
+          "recall": 0.3076923076923077,
+          "f1-score": 0.3333333333333333,
+          "support": 13.0
+        },
+        "payment_issue": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.5,
+          "support": 12.0
+        },
+        "refund_issue": {
+          "precision": 0.5384615384615384,
+          "recall": 0.5833333333333334,
+          "f1-score": 0.56,
+          "support": 12.0
+        },
+        "account_issue": {
+          "precision": 0.9166666666666666,
+          "recall": 0.6470588235294118,
+          "f1-score": 0.7586206896551724,
+          "support": 17.0
+        },
+        "prime_video_issue": {
+          "precision": 1.0,
+          "recall": 0.2727272727272727,
+          "f1-score": 0.42857142857142855,
+          "support": 11.0
+        },
+        "device_issue": {
+          "precision": 0.42857142857142855,
+          "recall": 0.6,
+          "f1-score": 0.5,
+          "support": 10.0
+        },
+        "product_or_content_issue": {
+          "precision": 0.1,
+          "recall": 0.037037037037037035,
+          "f1-score": 0.05405405405405406,
+          "support": 27.0
+        },
+        "support_complaint": {
+          "precision": 0.8,
+          "recall": 0.4,
+          "f1-score": 0.5333333333333333,
+          "support": 10.0
+        },
+        "other": {
+          "precision": 0.29545454545454547,
+          "recall": 0.8387096774193549,
+          "f1-score": 0.4369747899159664,
+          "support": 31.0
+        },
+        "accuracy": 0.44,
+        "macro avg": {
+          "precision": 0.563472890745618,
+          "recall": 0.4437275360166511,
+          "f1-score": 0.4544116345218619,
+          "support": 200.0
+        },
+        "weighted avg": {
+          "precision": 0.5178315018315018,
+          "recall": 0.44,
+          "f1-score": 0.42805867341761833,
+          "support": 200.0
+        }
+      }
+    },
+    "action": {
+      "accuracy": 0.655,
+      "classification_report": {
+        "auto_handle": {
+          "precision": 0.2222222222222222,
+          "recall": 0.06779661016949153,
+          "f1-score": 0.1038961038961039,
+          "support": 59.0
+        },
+        "escalate": {
+          "precision": 0.6978021978021978,
+          "recall": 0.900709219858156,
+          "f1-score": 0.7863777089783281,
+          "support": 141.0
+        },
+        "accuracy": 0.655,
+        "macro avg": {
+          "precision": 0.46001221001221,
+          "recall": 0.4842529150138238,
+          "f1-score": 0.44513690643721604,
+          "support": 200.0
+        },
+        "weighted avg": {
+          "precision": 0.557506105006105,
+          "recall": 0.655,
+          "f1-score": 0.585045635479072,
+          "support": 200.0
+        }
+      },
+      "auto_handle_precision": 0.2222,
+      "escalation_recall": 0.9007
+    },
+    "grounding": {
+      "grounded_reply_rate": 0.72,
+      "retrieval_available_rate": 1.0
+    }
+  },
+  "llm_judge": {
+    "num_judged": 32,
+    "mean_relevance": 2.7188,
+    "mean_groundedness": 3.0625,
+    "mean_helpfulness": 2.2812,
+    "mean_safety": 4.9688,
+    "mean_overall": 2.6562,
+    "overall_4_plus_rate": 0.3125,
+    "groundedness_4_plus_rate": 0.4375,
+    "helpfulness_4_plus_rate": 0.1875,
+    "enabled": true,
+    "available": true,
+    "requested_examples": 100,
+    "selected_examples": 100,
+    "judged_examples": 32,
+    "final_judgements": 32,
+    "valid_cached_judgements": 20,
+    "stale_cache_entries": 154,
+    "new_api_calls": 12,
+    "errors": 68,
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "results_file": "/Users/aniket/Desktop/Hiver-project/results/llm_judge_results.jsonl"
+  },
+  "human_agreement": {
+    "available": true,
+    "n_examples": 40,
+    "intent": {
+      "raw_agreement": 0.675,
+      "cohen_kappa": 0.6315,
+      "annotator_1_distribution": {
+        "account_issue": 4,
+        "delivery_issue": 7,
+        "device_issue": 2,
+        "order_issue": 4,
+        "other": 6,
+        "payment_issue": 2,
+        "prime_video_issue": 2,
+        "product_or_content_issue": 6,
+        "refund_issue": 2,
+        "shipping_issue": 3,
+        "support_complaint": 2
+      },
+      "annotator_2_distribution": {
+        "account_issue": 3,
+        "delivery_issue": 11,
+        "device_issue": 2,
+        "order_issue": 1,
+        "other": 9,
+        "payment_issue": 2,
+        "prime_video_issue": 2,
+        "product_or_content_issue": 2,
+        "refund_issue": 3,
+        "shipping_issue": 2,
+        "support_complaint": 3
+      }
+    },
+    "action": {
+      "raw_agreement": 0.925,
+      "cohen_kappa": 0.7931,
+      "annotator_1_distribution": {
+        "auto_handle": 10,
+        "escalate": 30
+      },
+      "annotator_2_distribution": {
+        "auto_handle": 9,
+        "escalate": 31
+      }
+    },
+    "escalation_reason": {
+      "raw_agreement": 0.025
+    }
+  },
+  "failure_analysis": {
+    "total_failure_records": 214,
+    "file": "/Users/aniket/Desktop/Hiver-project/results/failure_analysis.jsonl"
+  }
+}

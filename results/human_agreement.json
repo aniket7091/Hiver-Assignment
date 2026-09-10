@@ -1,0 +1,49 @@
+{
+  "available": true,
+  "n_examples": 40,
+  "intent": {
+    "raw_agreement": 0.675,
+    "cohen_kappa": 0.6315,
+    "annotator_1_distribution": {
+      "account_issue": 4,
+      "delivery_issue": 7,
+      "device_issue": 2,
+      "order_issue": 4,
+      "other": 6,
+      "payment_issue": 2,
+      "prime_video_issue": 2,
+      "product_or_content_issue": 6,
+      "refund_issue": 2,
+      "shipping_issue": 3,
+      "support_complaint": 2
+    },
+    "annotator_2_distribution": {
+      "account_issue": 3,
+      "delivery_issue": 11,
+      "device_issue": 2,
+      "order_issue": 1,
+      "other": 9,
+      "payment_issue": 2,
+      "prime_video_issue": 2,
+      "product_or_content_issue": 2,
+      "refund_issue": 3,
+      "shipping_issue": 2,
+      "support_complaint": 3
+    }
+  },
+  "action": {
+    "raw_agreement": 0.925,
+    "cohen_kappa": 0.7931,
+    "annotator_1_distribution": {
+      "auto_handle": 10,
+      "escalate": 30
+    },
+    "annotator_2_distribution": {
+      "auto_handle": 9,
+      "escalate": 31
+    }
+  },
+  "escalation_reason": {
+    "raw_agreement": 0.025
+  }
+}
