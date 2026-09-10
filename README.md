@@ -54,31 +54,19 @@ I first used unsupervised clustering to discover recurring issue patterns, then 
 
 The final taxonomy contains 10 business intents plus `other`:
 
-| Intent | Description |
-
+| Intent                     | Description                                                    |
 | -------------------------- | -------------------------------------------------------------- |
-
-| `delivery_issue` | Delivered/late/missing delivery problems |
-
-| `order_issue` | Problems with an existing order |
-
-| `shipping_issue` | Shipping availability, destination, or shipping questions |
-
-| `payment_issue` | Payment method/payment processing issues |
-
-| `refund_issue` | Refund or money-return issues |
-
-| `account_issue` | Account access, closure, or account-related issues |
-
-| `prime_video_issue` | Prime Video playback/subscription/content issues |
-
-| `device_issue` | Kindle/Fire/Amazon device issues |
-
-| `product_or_content_issue` | Product, media, or content-specific questions |
-
-| `support_complaint` | Complaints about support/service experience |
-
-| `other` | Messages that cannot be reliably assigned to a business intent |
+| `delivery_issue`           | Delivered/late/missing delivery problems                       |
+| `order_issue`              | Problems with an existing order                                |
+| `shipping_issue`           | Shipping availability, destination, or shipping questions      |
+| `payment_issue`            | Payment method/payment processing issues                       |
+| `refund_issue`             | Refund or money-return issues                                  |
+| `account_issue`            | Account access, closure, or account-related issues             |
+| `prime_video_issue`        | Prime Video playback/subscription/content issues               |
+| `device_issue`             | Kindle/Fire/Amazon device issues                               |
+| `product_or_content_issue` | Product, media, or content-specific questions                  |
+| `support_complaint`        | Complaints about support/service experience                    |
+| `other`                    | Messages that cannot be reliably assigned to a business intent |
 
 The `other` class is deliberate. Many tweets are extremely short, noisy, or lack sufficient context, so forcing every message into a specific business category would create misleading labels.
 
@@ -178,33 +166,20 @@ Sampling used heuristic signals only to improve coverage across issue types and 
 
 Final golden-set distribution:
 
-| Intent | Count |
-
+| Intent                   |   Count |
 | ------------------------ | ------: |
-
-| delivery_issue | 36 |
-
-| other | 31 |
-
-| product_or_content_issue | 27 |
-
-| order_issue | 21 |
-
-| account_issue | 17 |
-
-| shipping_issue | 13 |
-
-| refund_issue | 12 |
-
-| payment_issue | 12 |
-
-| prime_video_issue | 11 |
-
-| support_complaint | 10 |
-
-| device_issue | 10 |
-
-| **Total** | **200** |
+| delivery_issue           |      36 |
+| other                    |      31 |
+| product_or_content_issue |      27 |
+| order_issue              |      21 |
+| account_issue            |      17 |
+| shipping_issue           |      13 |
+| refund_issue             |      12 |
+| payment_issue            |      12 |
+| prime_video_issue        |      11 |
+| support_complaint        |      10 |
+| device_issue             |      10 |
+| **Total**                | **200** |
 
 Actions:
 
@@ -216,39 +191,26 @@ This distribution is intentionally not balanced and reflects the sampled evaluat
 
 ### Baselines
 
-| Model | Accuracy | Macro F1 | Weighted F1 |
-
+| Model                        |  Accuracy |   Macro F1 | Weighted F1 |
 | ---------------------------- | --------: | ---------: | ----------: |
-
-| Majority baseline | 18.0% | 0.0277 | 0.0549 |
-
-| TF-IDF + Logistic Regression | 35.0% | 0.3449 | 0.3359 |
-
-| Full agent | **44.0%** | **0.4544** | **0.4281** |
+| Majority baseline            |     18.0% |     0.0277 |      0.0549 |
+| TF-IDF + Logistic Regression |     35.0% |     0.3449 |      0.3359 |
+| Full agent                   | **44.0%** | **0.4544** |  **0.4281** |
 
 The full agent therefore improves intent classification over both simple baselines, although the absolute accuracy remains far from production-ready.
 
 ### Agent-level metrics
 
-| Metric | Result |
-
+| Metric                |     Result |
 | --------------------- | ---------: |
-
-| Intent accuracy | **44.0%** |
-
-| Intent macro F1 | **0.4544** |
-
-| Intent weighted F1 | **0.4281** |
-
-| Action accuracy | **65.5%** |
-
-| Auto-handle precision | **22.2%** |
-
-| Escalation recall | **90.1%** |
-
-| Grounded reply rate | **72.0%** |
-
-| Retrieval available | **100%** |
+| Intent accuracy       |  **44.0%** |
+| Intent macro F1       | **0.4544** |
+| Intent weighted F1    | **0.4281** |
+| Action accuracy       |  **65.5%** |
+| Auto-handle precision |  **22.2%** |
+| Escalation recall     |  **90.1%** |
+| Grounded reply rate   |  **72.0%** |
+| Retrieval available   |   **100%** |
 
 The action results show an important trade-off: the system has high escalation recall but low auto-handle precision. This is consistent with the conservative design goal, but it also means the current system escalates too many cases.
 
@@ -276,19 +238,13 @@ The provider quota was reached during evaluation, so only **32 examples complete
 
 Results from the completed evaluations:
 
-| Dimension | Mean |
-
+| Dimension    |     Mean |
 | ------------ | -------: |
-
-| Relevance | 2.72 / 5 |
-
+| Relevance    | 2.72 / 5 |
 | Groundedness | 3.06 / 5 |
-
-| Helpfulness | 2.28 / 5 |
-
-| Safety | 4.97 / 5 |
-
-| Overall | 2.66 / 5 |
+| Helpfulness  | 2.28 / 5 |
+| Safety       | 4.97 / 5 |
+| Overall      | 2.66 / 5 |
 
 This result is intentionally reported as **quota-limited**, not as a full 200-example LLM evaluation.
 
@@ -302,15 +258,11 @@ A second annotation set of **40 examples** was created to measure annotation con
 
 Results:
 
-| Dimension | Raw Agreement | Cohen's κ |
-
+| Dimension         | Raw Agreement |  Cohen's κ |
 | ----------------- | ------------: | ---------: |
-
-| Intent | **67.5%** | **0.6315** |
-
-| Action | **92.5%** | **0.7931** |
-
-| Escalation reason | **2.5%** | — |
+| Intent            |     **67.5%** | **0.6315** |
+| Action            |     **92.5%** | **0.7931** |
+| Escalation reason |      **2.5%** |          — |
 
 Intent and action agreement are substantially stronger than escalation-reason agreement.
 
@@ -1071,31 +1023,19 @@ This approach was useful because raw tweet clusters contain substantial lexical 
 
 The final taxonomy contains **10 business intents plus `other`**.
 
-| Intent | Description |
-
+| Intent                     | Description                                                                                     |
 | -------------------------- | ----------------------------------------------------------------------------------------------- |
-
-| `delivery_issue` | Problems with delivery, delivery status, delayed delivery, or delivered-but-not-received cases. |
-
-| `order_issue` | Problems concerning an order that are not primarily about shipping/delivery. |
-
-| `shipping_issue` | Shipping availability, destinations, shipping options, or related shipping questions. |
-
-| `payment_issue` | Payment, charging, billing, or payment-method problems. |
-
-| `refund_issue` | Refund requests, refund status, or refund-related problems. |
-
-| `account_issue` | Account access, account state, account closure, or account-related actions. |
-
-| `prime_video_issue` | Prime Video playback, subscription, or Prime Video-specific problems. |
-
-| `device_issue` | Amazon/device-related hardware or device functionality problems. |
-
-| `product_or_content_issue` | Product, media, content, or product-specific questions/problems. |
-
-| `support_complaint` | Complaints about the support/service experience requiring human attention. |
-
-| `other` | Messages that cannot be confidently mapped to a business intent. |
+| `delivery_issue`           | Problems with delivery, delivery status, delayed delivery, or delivered-but-not-received cases. |
+| `order_issue`              | Problems concerning an order that are not primarily about shipping/delivery.                    |
+| `shipping_issue`           | Shipping availability, destinations, shipping options, or related shipping questions.           |
+| `payment_issue`            | Payment, charging, billing, or payment-method problems.                                         |
+| `refund_issue`             | Refund requests, refund status, or refund-related problems.                                     |
+| `account_issue`            | Account access, account state, account closure, or account-related actions.                     |
+| `prime_video_issue`        | Prime Video playback, subscription, or Prime Video-specific problems.                           |
+| `device_issue`             | Amazon/device-related hardware or device functionality problems.                                |
+| `product_or_content_issue` | Product, media, content, or product-specific questions/problems.                                |
+| `support_complaint`        | Complaints about the support/service experience requiring human attention.                      |
+| `other`                    | Messages that cannot be confidently mapped to a business intent.                                |
 
 The `other` class is deliberate.
 
@@ -1502,45 +1442,28 @@ The evaluation set intentionally contains difficult and ambiguous examples rathe
 
 The final 200 examples are distributed as follows:
 
-| Intent | Examples |
-
+| Intent                     | Examples |
 | -------------------------- | -------: |
-
-| `delivery_issue` | 36 |
-
-| `other` | 31 |
-
-| `product_or_content_issue` | 27 |
-
-| `order_issue` | 21 |
-
-| `account_issue` | 17 |
-
-| `shipping_issue` | 13 |
-
-| `refund_issue` | 12 |
-
-| `payment_issue` | 12 |
-
-| `prime_video_issue` | 11 |
-
-| `support_complaint` | 10 |
-
-| `device_issue` | 10 |
-
-| **Total** | **200** |
+| `delivery_issue`           |       36 |
+| `other`                    |       31 |
+| `product_or_content_issue` |       27 |
+| `order_issue`              |       21 |
+| `account_issue`            |       17 |
+| `shipping_issue`           |       13 |
+| `refund_issue`             |       12 |
+| `payment_issue`            |       12 |
+| `prime_video_issue`        |       11 |
+| `support_complaint`        |       10 |
+| `device_issue`             |       10 |
+| **Total**                  |  **200** |
 
 Action labels:
 
-| Action | Examples |
-
+| Action        | Examples |
 | ------------- | -------: |
-
-| `escalate` | 141 |
-
-| `auto_handle` | 59 |
-
-| **Total** | **200** |
+| `escalate`    |      141 |
+| `auto_handle` |       59 |
+| **Total**     |  **200** |
 
 ---
 
@@ -1592,14 +1515,10 @@ It always predicts the majority intent.
 
 Results on the 200-example golden set:
 
-| Metric | Score |
-
+| Metric      |      Score |
 | ----------- | ---------: |
-
-| Accuracy | **18.00%** |
-
-| Macro F1 | **0.0277** |
-
+| Accuracy    | **18.00%** |
+| Macro F1    | **0.0277** |
 | Weighted F1 | **0.0549** |
 
 This baseline demonstrates the impact of class imbalance.
@@ -1631,14 +1550,10 @@ Intent
 
 Results:
 
-| Metric | Score |
-
+| Metric      |      Score |
 | ----------- | ---------: |
-
-| Accuracy | **35.00%** |
-
-| Macro F1 | **0.3449** |
-
+| Accuracy    | **35.00%** |
+| Macro F1    | **0.3449** |
 | Weighted F1 | **0.3359** |
 
 This provides a stronger reference point than the trivial majority baseline.
@@ -1651,25 +1566,16 @@ The complete agent was evaluated on the 200-example golden set.
 
 Current headline results:
 
-| Metric | Result |
-
+| Metric                |     Result |
 | --------------------- | ---------: |
-
-| Intent accuracy | **44.0%** |
-
-| Intent macro F1 | **0.4544** |
-
-| Intent weighted F1 | **0.4281** |
-
-| Action accuracy | **65.5%** |
-
-| Auto-handle precision | **22.2%** |
-
-| Escalation recall | **90.1%** |
-
-| Grounded reply rate | **72.0%** |
-
-| Retrieval available | **100%** |
+| Intent accuracy       |  **44.0%** |
+| Intent macro F1       | **0.4544** |
+| Intent weighted F1    | **0.4281** |
+| Action accuracy       |  **65.5%** |
+| Auto-handle precision |  **22.2%** |
+| Escalation recall     |  **90.1%** |
+| Grounded reply rate   |  **72.0%** |
+| Retrieval available   |   **100%** |
 
 The results are stored in:
 
@@ -1819,19 +1725,13 @@ Therefore, the LLM-judge metrics are **not treated as a full 200-example estimat
 
 Current results:
 
-| Dimension | Score |
-
-| ------------ | -------------: |
-
-| Relevance | **2.5263 / 5** |
-
-| Groundedness | **3.0000 / 5** |
-
-| Helpfulness | **2.0526 / 5** |
-
-| Safety | **4.9474 / 5** |
-
-| Overall | **2.4211 / 5** |
+| Dimension    |        Score |
+| ------------ | -----------: |
+| Relevance    | **2.72 / 5** |
+| Groundedness | **3.06 / 5** |
+| Helpfulness  | **2.28 / 5** |
+| Safety       | **4.97 / 5** |
+| Overall      | **2.66 / 5** |
 
 Additional judge statistics:
 
@@ -1879,19 +1779,13 @@ A second-pass consistency check is therefore not available for the latest evalua
 
 Current consistency results:
 
-| Dimension | Result |
-
+| Dimension                       |     Result |
 | ------------------------------- | ---------: |
-
-| Intent raw agreement | **67.5%** |
-
-| Intent Cohen's kappa | **0.6315** |
-
-| Action raw agreement | **92.5%** |
-
-| Action Cohen's kappa | **0.7931** |
-
-| Escalation reason raw agreement | **2.5%** |
+| Intent raw agreement            |  **67.5%** |
+| Intent Cohen's kappa            | **0.6315** |
+| Action raw agreement            |  **92.5%** |
+| Action Cohen's kappa            | **0.7931** |
+| Escalation reason raw agreement |   **2.5%** |
 
 These values should not be presented as evidence of independent human agreement.
 
@@ -1933,17 +1827,12 @@ results/failure_analysis.md
 
 Latest failure counts:
 
-| Failure type | Count |
-
+| Failure type             |   Count |
 | ------------------------ | ------: |
-
 | Intent misclassification | **112** |
-
-| Action misclassification | **69** |
-
-| Ungrounded auto-handle | **26** |
-
-| Ambiguous retrieval | **7** |
+| Action misclassification |  **69** |
+| Ungrounded auto-handle   |  **26** |
+| Ambiguous retrieval      |   **7** |
 
 The counts can overlap because one example can exhibit multiple failure types.
 
