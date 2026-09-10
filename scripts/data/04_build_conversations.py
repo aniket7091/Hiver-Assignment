@@ -1,3 +1,5 @@
+"""Historical context-extraction attempt retained for reproducibility."""
+
 import pandas as pd
 import os
 

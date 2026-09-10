@@ -1,19 +1,5 @@
 import re
-import sys
-from pathlib import Path
 from typing import Any, Dict, List, Optional
-
-
-
-# CONFIG
-
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-
-# Allow imports like: from src.retrieval.retrieve import ...
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
 
 
 # TEXT UTILITIES
@@ -502,7 +488,6 @@ def main():
     print("AMAZONHELP GROUNDED REPLY GENERATOR")
     print("=" * 70)
 
-    # Import after PROJECT_ROOT has been added to sys.path
     from src.retrieval.retrieve import AmazonHelpRetriever
 
     print("\nLoading retrieval index...")

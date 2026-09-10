@@ -1,3 +1,5 @@
+"""Exploratory scan of the raw TWCS data for AmazonHelp mentions."""
+
 import pandas as pd
 
 FILE_PATH = "data/raw/twcs.csv"

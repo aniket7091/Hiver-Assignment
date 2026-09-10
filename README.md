@@ -562,19 +562,19 @@ The intended workflow is:
 
 ```bash
 
-python scripts/prepare_data.py
+python -m scripts.prepare_data
 
-python scripts/create_golden_set.py
+python -m scripts.create_golden_set
 
-python scripts/label_golden_set.py
+python -m scripts.label_golden_set
 
-python scripts/verify_golden_set.py
+python -m scripts.verify_golden_set
 
-python scripts/run_agent.py
+python -m scripts.run_agent
 
-python scripts/evaluate.py
+python -m scripts.evaluate
 
-python scripts/verify_second_annotation.py
+python -m scripts.verify_second_annotation
 
 python -m src.evaluation.human_agreement
 
@@ -782,144 +782,99 @@ The project also includes individual data inspection and validation scripts used
 ```text
 
 Hiver-project/
-
 │
-
-├── README.md
-
-├── DECISION_LOG.md
-
-├── requirements.txt
-
 ├── .gitignore
-
-│
-
-├── 01_inspect_data.py
-
-├── 02_find_amazonhelp.py
-
-├── 03_extract_amazonhelp.py
-
-├── 04_build_conversations.py
-
-├── 04_extract_amazonhelp_context_v2.py
-
-├── 04_validate_context.py
-
-├── 05_reconstruct_conversations.py
-
-├── 06_validate_data.py
-
-│
-
-├── data/
-
-│ ├── raw/
-
-│ │ └── twcs.csv
-
-│ │
-
-│ ├── processed/
-
-│ │ ├── amazon_help_tweets.csv
-
-│ │ ├── amazon_help_context.csv
-
-│ │ ├── amazon_help_threads.jsonl
-
-│ │ ├── amazonhelp_intent_clusters.csv
-
-│ │ ├── intent_classifier.pkl
-
-│ │ └── retrieval_index.pkl
-
-│ │
-
-│ └── golden/
-
-│ ├── golden_set.jsonl
-
-│ ├── second_annotation.jsonl
-
-│ ├── annotation_guidelines.md
-
-│ └── second_annotation_guidelines.md
-
-│
-
-├── report/
-
-│ └── report.md
-
-│
-
-├── results/
-
-│ ├── metrics.json
-
-│ ├── examples.json
-
-│ ├── evaluation_examples.jsonl
-
-│ ├── failure_analysis.jsonl
-
-│ ├── failure_analysis.md
-
-│ ├── human_agreement.json
-
-│ ├── llm_judge_results.jsonl
-
-│ └── llm_judge_metrics.json
-
-│
-
-├── scripts/
-
-│ ├── prepare_data.py
-
-│ ├── create_golden_set.py
-
-│ ├── label_golden_set.py
-
-│ ├── verify_golden_set.py
-
-│ ├── create_second_annotation_set.py
-
-│ ├── verify_second_annotation.py
-
-│ ├── run_agent.py
-
-│ ├── evaluate.py
-
-│ ├── auto_label_golden_set.py
-
-│ └── reset_golden_labels.py
-
-│
-
-├── src/
-
-│ ├── data/
-
-│ ├── intent/
-
-│ ├── retrieval/
-
-│ ├── agent/
-
-│ └── evaluation/
-
-│
-
-└── tests/
-
-├── test\_agent\_rules.py
-
-├── test\_human\_agreement.py
-
-└── test\_llm\_judge\_cache.py
+├── DECISION_LOG.md
+├── README.md
+├── data
+│   ├── golden
+│   │   ├── annotation_guidelines.md
+│   │   ├── golden_set.json
+│   │   ├── golden_set.jsonl
+│   │   ├── golden_set_backup.jsonl
+│   │   ├── second_annotation.jsonl
+│   │   ├── second_annotation_backup.jsonl
+│   │   └── second_annotation_guidelines.md
+│   ├── processed
+│   │   ├── amazon_help_context.csv
+│   │   ├── amazon_help_threads.jsonl
+│   │   ├── amazon_help_tweets.csv
+│   │   ├── amazonhelp_intent_clusters.csv
+│   │   ├── intent_classifier.pkl
+│   │   └── retrieval_index.pkl
+│   └── raw
+│       └── twcs.csv
+├── pyproject.toml
+├── report
+│   └── report.md
+├── requirements.txt
+├── results
+│   ├── evaluation_examples.jsonl
+│   ├── failure_analysis.jsonl
+│   ├── failure_analysis.md
+│   ├── human_agreement.json
+│   ├── llm_judge_metrics.json
+│   ├── llm_judge_results.jsonl
+│   └── metrics.json
+├── scripts
+│   ├── __init__.py
+│   ├── _bootstrap.py
+│   ├── auto_label_golden_set.py
+│   ├── create_golden_set.py
+│   ├── create_second_annotation_set.py
+│   ├── data
+│   │   ├── 03_extract_amazonhelp.py
+│   │   ├── 04_build_conversations.py
+│   │   ├── 04_extract_amazonhelp_context_v2.py
+│   │   ├── 04_validate_context.py
+│   │   ├── 05_reconstruct_conversations.py
+│   │   └── 06_validate_data.py
+│   ├── evaluate.py
+│   ├── exploration
+│   │   ├── 01_inspect_data.py
+│   │   └── 02_find_amazonhelp.py
+│   ├── label_golden_set.py
+│   ├── prepare_data.py
+│   ├── reset_golden_labels.py
+│   ├── run_agent.py
+│   ├── verify_golden_set.py
+│   └── verify_second_annotation.py
+├── src
+│   ├── __init__.py
+│   ├── agent
+│   │   ├── __init__.py
+│   │   ├── escalation.py
+│   │   ├── generate_reply.py
+│   │   └── pipeline.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   ├── build_threads.py
+│   │   ├── clean.py
+│   │   └── load_data.py
+│   ├── evaluation
+│   │   ├── __init__.py
+│   │   ├── agent_eval.py
+│   │   ├── baselines.py
+│   │   ├── failures.py
+│   │   ├── golden_set.py
+│   │   ├── human_agreement.py
+│   │   ├── llm_judge.py
+│   │   ├── reply_judge.py
+│   │   ├── reporting.py
+│   │   └── runner.py
+│   ├── intent
+│   │   ├── __init__.py
+│   │   ├── classifier.py
+│   │   ├── discover.py
+│   │   └── schemas.py
+│   └── retrieval
+│       ├── __init__.py
+│       ├── index.py
+│       └── retrieve.py
+└── tests
+    ├── test_agent_rules.py
+    ├── test_human_agreement.py
+    └── test_llm_judge_cache.py
 ```
 
 The numbered root-level scripts are retained because they document the data inspection and reconstruction process.
@@ -998,7 +953,7 @@ The main preparation entry point is:
 
 ```bash
 
-python scripts/prepare_data.py
+python -m scripts.prepare_data
 
 ```
 
@@ -1411,7 +1366,7 @@ After preparing the data and generating the required processed artifacts:
 
 ```bash
 
-python scripts/run_agent.py
+python -m scripts.run_agent
 
 ```
 
@@ -1595,7 +1550,7 @@ The golden set can be validated using:
 
 ```bash
 
-python scripts/verify_golden_set.py
+python -m scripts.verify_golden_set
 
 ```
 
@@ -1946,9 +1901,9 @@ The agreement workflow can be run with:
 
 ```bash
 
-python scripts/create_second_annotation_set.py
+python -m scripts.create_second_annotation_set
 
-python scripts/verify_second_annotation.py
+python -m scripts.verify_second_annotation
 
 python -m src.evaluation.human_agreement
 
@@ -2404,7 +2359,7 @@ After the required data and artifacts are available:
 
 ```bash
 
-python scripts/evaluate.py
+python -m scripts.evaluate
 
 ```
 
@@ -2492,19 +2447,19 @@ pip install -r requirements.txt
 
 # 5. Prepare data
 
-python scripts/prepare_data.py
+python -m scripts.prepare_data
 
 # 6. Validate golden set
 
-python scripts/verify_golden_set.py
+python -m scripts.verify_golden_set
 
 # 7. Run agent
 
-python scripts/run_agent.py
+python -m scripts.run_agent
 
 # 8. Run evaluation
 
-python scripts/evaluate.py
+python -m scripts.evaluate
 
 # 9. Run tests
 

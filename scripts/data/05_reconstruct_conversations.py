@@ -1,3 +1,5 @@
+"""Reconstruct ordered AmazonHelp conversation threads."""
+
 import pandas as pd
 import json
 import os

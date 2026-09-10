@@ -1,3 +1,5 @@
+"""Validate extracted AmazonHelp conversation context."""
+
 import pandas as pd
 import os
 

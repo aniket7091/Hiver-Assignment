@@ -1,3 +1,5 @@
+"""Validate the generated AmazonHelp thread artifact."""
+
 import json
 import os
 from collections import Counter

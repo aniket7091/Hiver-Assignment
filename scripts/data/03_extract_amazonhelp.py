@@ -1,3 +1,5 @@
+"""Extract AmazonHelp-authored tweets from the raw TWCS data."""
+
 import pandas as pd
 import os
 

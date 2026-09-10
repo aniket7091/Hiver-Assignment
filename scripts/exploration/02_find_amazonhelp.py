@@ -1,3 +1,5 @@
+"""Exploratory identification of the AmazonHelp author ID."""
+
 import pandas as pd
 
 FILE_PATH = "data/raw/twcs.csv"

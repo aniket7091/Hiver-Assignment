@@ -2,15 +2,12 @@
 
 import json
 import random
-import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List
+import sys
 
-
-ROOT_DIR = Path(__file__).resolve().parents[1]
-if str(ROOT_DIR) not in sys.path:
-    sys.path.insert(0, str(ROOT_DIR))
+ROOT_DIR = Path(__file__).resolve().parent.parent
 
 
 from src.intent.schemas import INTENTS
