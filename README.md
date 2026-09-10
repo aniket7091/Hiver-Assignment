@@ -76,37 +76,7 @@ The `other` class is deliberate. Many tweets are extremely short, noisy, or lack
 
 The pipeline has four major components:
 
-```text
-
-Customer message
-
-  |
-
-  v
-Intent classifier
-
-  |
-
-  +--------------------+
-
-  \|                    |
-
-  v                    v
-Retrieval Escalation policy
-
-  \|                    |
-
-  v                    v
-Historical AmazonHelp Auto-handle /
-
-response evidence Escalate + reason
-
-  |
-
-  v
-Grounded reply draft
-
-```
+![System Architecture](docs/system_architecture.png)
 
 ### Intent classification
 
